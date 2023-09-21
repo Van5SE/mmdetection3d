@@ -47,7 +47,7 @@ def to_tensor(
 
 @TRANSFORMS.register_module()
 class Pack3DDetInputs(BaseTransform):
-    INPUTS_KEYS = ['points', 'img']
+    INPUTS_KEYS = ['points', 'img' ,'img_id']
     INSTANCEDATA_3D_KEYS = [
         'gt_bboxes_3d', 'gt_labels_3d', 'attr_labels', 'depths', 'centers_2d'
     ]
@@ -64,7 +64,7 @@ class Pack3DDetInputs(BaseTransform):
     def __init__(
         self,
         keys: tuple,
-        meta_keys: tuple = ('img_path', 'ori_shape', 'img_shape', 'lidar2img',
+        meta_keys: tuple = ('img_path', 'img_id', 'ori_shape', 'img_shape', 'lidar2img',
                             'depth2img', 'cam2img', 'pad_shape',
                             'scale_factor', 'flip', 'pcd_horizontal_flip',
                             'pcd_vertical_flip', 'box_mode_3d', 'box_type_3d',
